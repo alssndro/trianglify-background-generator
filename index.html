@@ -26,18 +26,17 @@
         <input class="screen-size-input" id="bg-width" type="text" value="800"/>
         <input class="screen-size-input" id="bg-height" type="text" value="600"/>
         
+        <label for="cell-slider">Cell Size</label>
+        <div id="cell-slider" class="slider"></div>
+        <p class="slider-value" id="cell-value">150</p>
+
         <label class="noise-label" for="noise-slider">Noise</label>
         <p class="input-info">(affects render time)</p>
         <div id="noise-slider" class="slider"></div>
         <p class="slider-value" id="noise-value">0</p>
-
-        <label for="cell-slider">Cell Size</label>
-        <div id="cell-slider" class="slider"></div>
-        <p class="slider-value" id="cell-value">150</p>
         
-        <label for="auto-generate">Auto-generate on change?</label>
-        <input id="auto-generate" type="checkbox" label="Auto-generate?"/>
-
+        <label for="colour-scheme">Colour Scheme</label>
+        <p class="input-info">Top 100 palettes from colourlovers.com</p>
         <button id="generate">Generate</button>
         <button id="convert">Download</button>
 

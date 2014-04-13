@@ -150,7 +150,7 @@ label {
   text-transform: uppercase;
 }
 
-input {
+input, select {
   display: block;
   margin: 0 0 3em 0;
   outline: none;

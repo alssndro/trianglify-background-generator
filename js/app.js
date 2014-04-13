@@ -40,8 +40,7 @@ function generateBackground() {
   var cellSize = $('#cell-slider').slider("value");
 
   var t = new Trianglify({"noiseIntensity": noise,
-                          "cellsize": cellSize,
-                          "x_gradient": ['#00A0B0','#6A4A3C','#CC333F','#EB6841','#EDC951']
+                          "cellsize": cellSize
                         });
 
   var width = parseInt($("#bg-width").val());
@@ -70,19 +69,31 @@ $("#convert").on('click', function() {
   window.open(img);
 });
 
-// $.ajax({ 
-//     type: "GET",
-//     url: "http://www.colourlovers.com/api/palettes/top?jsonCallback=?", 
-//     data: { numResults: 10 },
-//     dataType: 'json',
-//     success: function(data){        
-//         $(data).each(function() {
-//           $("#output").append("<p>" + this["title"] + "</p>");
-//             $("#output").append("[");
-//             $(this["colors"]).each(function(){
-//                 $("#output").append("'#" + this + "',");
-//             });
-//               $("#output").append("]");
-//         });
-//     }
-// });
+function Palette(name, colors) {
+  this.name = name;
+  this.colors = colors;
+}
+
+var palettes = [];
+
+palettes.push(new Palette(["#1", "#2", "#3", "#4"]));
+
+$.ajax({ 
+    type: "GET",
+    url: "http://www.colourlovers.com/api/palettes/top?jsonCallback=?", 
+    data: { numResults: 10 },
+    dataType: 'json',
+    success: function(data){        
+      $(data).each(function() {
+        var palette_hash = this;
+        var palette_name = palette_hash["title"];
+        var colors = [];
+
+        $(palette_hash["colors"]).each(function(){
+          colors.push("#" + this);
+        });
+
+        palettes.push(new Palette(palette_name, colors));
+      });
+    }
+});

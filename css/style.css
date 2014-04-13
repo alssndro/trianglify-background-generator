@@ -4,10 +4,17 @@
  Base styles: opinionated defaults
  ========================================================================== */
 
+*, *:before, *:after {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+ }
+
 html {
-  color: #222;
+  color: #444444;
   font-size: 1em;
-  line-height: 1.4;
+  line-height: 1.5;
+  font-family: "Muli", sans-serif;
 }
 
 /*
@@ -85,9 +92,24 @@ textarea {
  Author's custom styles
  ========================================================================== */
 
-header {
-  width: 100%;
-  margin: 0 0 40px 0;
+a {
+  color: #444444;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 1.5em;
+  text-align: center;
+  margin: 0 0 1em 0;
+  line-height: 1;
+}
+
+p {
+  margin: 1.5em 0;
 }
 
 .slider {
@@ -98,19 +120,72 @@ header {
   margin: 0 auto;
 }
 
+html, body, .main {
+  width: 100%;
+  height: 100%;
+}
 
+#canvas {
+  display: none;
+}
 
+#controls {
+  float: left;
+  width: 15%;
+  height: 100%;
+  padding: 1.5em 1%;
+}
 
+#backgrounds {
+  float: left;
+  width: 85%;
+  height: 100%;
+  background-size: cover;
+}
 
+label {
+  display: block;
+  width: 100%;
+  margin: 0 0 0.75em 0;
+  text-transform: uppercase;
+}
 
+input {
+  display: block;
+  margin: 0 0 3em 0;
+  outline: none;
+  width: 100%;
+  border: none;
+  background-color: #EDEDED;
+  line-height: 1.5;
+  text-align: center;
+}
 
+button {
+  border: 1px solid #BBBBBB;
+  border-radius: 0px;
+  width: 100%;
+  display: block;
+  margin: 0 0 1.5em 0;
+  line-height: 1.5;
+  text-transform: uppercase;
+  background-color: white;
+  outline: none;
+}
 
+button:hover {
+  background-color: #262626;
+  border-color: #262626;
+  color: white;
+}
 
+.slider-value {
+  text-align: center;
+}
 
-
-
-
-
+.info {
+  padding: 1.5em 0 0 0;
+}
 
 /* ==========================================================================
  Helper classes

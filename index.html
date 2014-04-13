@@ -10,32 +10,45 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <header>
-      trianglify background generator
-      <input id="auto-generate" type="checkbox" label="Auto-generate?"/>
-      <input id="bg-width" type="text" value="800"/>
-      <input id="bg-height" type="text" value="600"/>
-      <h2>Noise</h2>
-      <div id="noise-slider" class="slider"></div>
-      <p id="noise-value">0</p>
-
-      <h2>Cell Size</h2>
-      <div id="cell-slider" class="slider"></div>
-      <p id="cell-value">150</p>
-
-      <button id="generate">Generate</button>
-      <button id="convert">Convert</button>
-
     </header>
-    <div class="main">
-      <div id="the-image"></div>
-      <canvas id="canvas" width="800px" height="600px"></canvas> 
+    <div class="main clearfix">
+      <div id="controls">
+        <h1>
+          trianglify background generator
+        </h1>
+        <label for="bg-width">Width</label>
+        <input id="bg-width" type="text" value="800"/>
+        <label for="bg-height">Height</label>
+        <input id="bg-height" type="text" value="600"/>
+        
+        <label for="noise-slider">Noise</label>
+        <div id="noise-slider" class="slider"></div>
+        <p class="slider-value" id="noise-value">0</p>
+
+        <label for="cell-slider">Cell Size</label>
+        <div id="cell-slider" class="slider"></div>
+        <p class="slider-value" id="cell-value">150</p>
+        
+        <label for="auto-generate">Auto-generate on change?</label>
+        <input id="auto-generate" type="checkbox" label="Auto-generate?"/>
+
+        <button id="generate">Generate</button>
+        <button id="convert">Convert</button>
+
+        <div class="info">
+          <p>Powered by <a href="https://github.com/qrohlf/trianglify">trianglify.</a></p>
+          <p><a href="https://github.com/alessndro/trianglify-background-generator/">View on Github</a></p>
+        </div>
+      </div>
+      <div id="backgrounds">
+        <canvas id="canvas" width="800px" height="600px"></canvas>
+        <img id="downloadable-image" src="" alt=""> 
+      </div>
     </div>
-    <footer>
-      Made by sandro
-    </footer>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>

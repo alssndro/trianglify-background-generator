@@ -17,14 +17,15 @@
     <header>
     </header>
     <div class="main clearfix">
+      <div id="loading"><p>Loading....</p><img src="loading.gif" alt=""></div>
       <div id="controls">
         <h1>
           trianglify background generator
         </h1>
         <label class="screen-size-input" for="bg-width">Width</label>
         <label class="screen-size-input" for="bg-height">Height</label>
-        <input class="screen-size-input" id="bg-width" type="text" value="800"/>
-        <input class="screen-size-input" id="bg-height" type="text" value="600"/>
+        <input class="screen-size-input" id="bg-width" type="text" value="1920"/>
+        <input class="screen-size-input" id="bg-height" type="text" value="1080"/>
         
         <label for="cell-slider">Cell Size</label>
         <div id="cell-slider" class="slider"></div>
@@ -37,27 +38,26 @@
         
         <label for="colour-scheme">Colour Scheme</label>
         <p class="input-info">Top 100 palettes from colourlovers.com</p>
-        <button id="generate">Generate</button>
-        <button id="convert">Download</button>
-
+        <a id="randomise-colours" href="#">Randomise Colours</a>
+        <button id="generate">Re-generate</button>
+        <button id="download">Download</button>
+          <a id="saveas" target="_blank" href="#">Save As PNG</a>
         <div class="info">
           <p>Powered by <a href="https://github.com/qrohlf/trianglify">trianglify</a></p>
           <p><a href="https://github.com/alessndro/trianglify-background-generator/">View on Github</a></p>
         </div>
       </div>
       <div id="backgrounds">
-        <canvas id="canvas" width="800px" height="600px"></canvas>
-        <img id="downloadable-image" src="" alt=""> 
       </div>
+      <footer>
+        <canvas id="the-canvas">Your browser does not support the HTML Canvas element.</canvas>
+
+      </footer>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     
-    <script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/rgbcolor.js"></script> 
-    <script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/StackBlur.js"></script>
-    <script type="text/javascript" src="http://canvg.googlecode.com/svn/trunk/canvg.js"></script> 
-
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="js/trianglify-min.js"></script>
     <script src="js/app.js"></script>

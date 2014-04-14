@@ -2,7 +2,10 @@ var currentTrianglifier;
 var currentPattern;
 
 var palettes = [];
-var currentPalette;
+var currentXPalette;
+var currentYPalette;
+
+var NO_OF_PALETTES_TO_RETRIEVE = 100;
 
 var triOptions = {
   width: function() {
@@ -17,21 +20,22 @@ var triOptions = {
   noise: function(){
     return $('#noise-slider').slider("value");
   },
-  colors: function(){
-    return currentPalette.colors;
+  xColors: function(){
+    return currentXPalette.colors;
+  },
+  yColors: function(){
+    return currentYPalette.colors;
   }
 };
 
 initiateSliders();
-getColourSchemes(10);
-
-
-
+getColourSchemes(NO_OF_PALETTES_TO_RETRIEVE);
 
 function setNewTrianglifier() {
   currentTrianglifier = new Trianglify({"noiseIntensity": triOptions.noise(),
                           "cellsize": triOptions.cellSize(),
-                          "x_gradient": triOptions.colors()
+                          "x_gradient": triOptions.xColors(),
+                          "y_gradient": triOptions.yColors()
                         });
 }
 
@@ -40,20 +44,30 @@ $("#generate").on('click', function() {
   generateBackground();
 });
 
+$("#download").on('click', function() {
+  convertSVGtoPNG();
+});
+
 function generateBackground() {
   currentPattern = currentTrianglifier.generate(triOptions.width(), triOptions.height());
-
   $("#backgrounds").css({"background-image": currentPattern.dataUrl});
-
-  //$("#the-image").replaceWith(pattern.svgString);
+  convertSVGtoPNG();
 }
 
-$("#convert").on('click', function() {
-  canvg('canvas', currentPattern.svgString);
-  var canvas = document.getElementById("canvas");
-  var img = canvas.toDataURL("image/png");
-  window.open(img);
-});
+function convertSVGtoPNG() {
+  var canvas = document.getElementById('the-canvas');
+  var context = canvas.getContext('2d');
+  canvas.width = triOptions.width();
+  canvas.height = triOptions.height();
+
+  var image = new Image();
+
+  image.addEventListener("load", function() {
+                  context.drawImage(image, 0, 0);
+                  $("#saveas").attr("href", canvas.toDataURL("image/png"));
+              }, false);
+  image.src = currentPattern.dataUri;
+}
 
 function Palette(name, colors) {
   this.name = name;
@@ -61,12 +75,12 @@ function Palette(name, colors) {
 }
 
 function getColourSchemes(limit) {
-  $.ajax({ 
+  $.ajax({
       type: "GET",
-      url: "http://www.colourlovers.com/api/palettes/top?jsonCallback=?", 
+      url: "http://www.colourlovers.com/api/palettes/top?jsonCallback=?",
       data: { numResults: limit },
       dataType: 'json',
-      success: function(data){        
+      success: function(data){
         $(data).each(function() {
           var palette_hash = this;
           var palette_name = palette_hash["title"];
@@ -79,15 +93,17 @@ function getColourSchemes(limit) {
           palettes.push(new Palette(palette_name, colors));
         });
         addColourSchemeControls();
-        currentPalette = palettes[0];
+        currentXPalette = palettes[0];
+        currentYPalette = palettes[0];
         setNewTrianglifier();
         generateBackground();
+        $("#loading").fadeOut(500);
       }
   });
 }
 
 function addColourSchemeControls() {
-  var select = $("<select id='colour-scheme-select' name='colour-scheme'>");
+  var select = $("<select id='colour-scheme-select-x' name='colour-scheme-x'>");
 
   $(palettes).each(function(index){
     $(select).append($("<option></option>").attr("value", index).text(this.name));
@@ -95,15 +111,29 @@ function addColourSchemeControls() {
 
   $("#generate").before(select);
 
-  $("#colour-scheme-select").on("change", function(){
-    currentPalette = palettes[$(this).val()];
+  $("#colour-scheme-select-x").on("change", function(){
+    currentXPalette = palettes[$(this).val()];
+    setNewTrianglifier();
+    generateBackground();
+  });
+
+  select = $("<select id='colour-scheme-select-y' name='colour-scheme'>");
+
+  $(palettes).each(function(index){
+    $(select).append($("<option></option>").attr("value", index).text(this.name));
+  });
+
+  $("#generate").before(select);
+
+  $("#colour-scheme-select-y").on("change", function(){
+    currentYPalette = palettes[$(this).val()];
     setNewTrianglifier();
     generateBackground();
   });
 }
 
 function initiateSliders() {
-  $('#noise-slider').slider({ 
+  $('#noise-slider').slider({
     max: 1,
     min: 0,
     value: 0,
@@ -115,7 +145,7 @@ function initiateSliders() {
     }
   });
 
-  $('#cell-slider').slider({ 
+  $('#cell-slider').slider({
     max: 500,
     min: 10,
     value: 150,
@@ -132,3 +162,9 @@ $(".screen-size-input").on("change", function(){
   setNewTrianglifier();
   generateBackground();
 });
+
+ $("#randomise-colours").on("click", function(){
+    // Need to call change() to trigger the event handler so the background is updated
+    $("#colour-scheme-select-x").val(Math.floor(Math.random() * NO_OF_PALETTES_TO_RETRIEVE)).change();
+    $("#colour-scheme-select-y").val(Math.floor(Math.random() * NO_OF_PALETTES_TO_RETRIEVE)).change();
+  });

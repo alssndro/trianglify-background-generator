@@ -22,26 +22,40 @@
         <h1>
           trianglify background generator
         </h1>
-        <label class="screen-size-input" for="bg-width">Width</label>
-        <label class="screen-size-input" for="bg-height">Height</label>
-        <input class="screen-size-input" id="bg-width" type="text" value="1920"/>
-        <input class="screen-size-input" id="bg-height" type="text" value="1080"/>
-        
-        <label for="cell-slider">Cell Size</label>
-        <div id="cell-slider" class="slider"></div>
-        <p class="slider-value" id="cell-value">150</p>
+        <div class="panel">
+          <h2>Render Options</h2>
+          <label class="screen-size-input" for="bg-width">Width</label>
+          <input class="screen-size-input" id="bg-width" type="text" value="800"/>
+          <label class="screen-size-input" for="bg-height">Height</label>
+          <input class="screen-size-input" id="bg-height" type="text" value="400"/>
+          
+          <label for="cell-slider">Cell Size</label>
+          <div id="cell-slider" class="slider"></div>
+          <p class="slider-value" id="cell-value">150</p>
 
-        <label class="noise-label" for="noise-slider">Noise</label>
-        <p class="input-info">(affects render time)</p>
-        <div id="noise-slider" class="slider"></div>
-        <p class="slider-value" id="noise-value">0</p>
-        
-        <label for="colour-scheme">Colour Scheme</label>
-        <p class="input-info">Top 100 palettes from colourlovers.com</p>
-        <a id="randomise-colours" href="#">Randomise Colours</a>
-        <button id="generate">Re-generate</button>
-        <button id="download">Download</button>
+          <label for="cellpadding-slider">Cell Padding</label>
+          <div id="cellpadding-slider" class="slider"></div>
+          <p class="slider-value" id="cellpadding-value">150</p>
+
+          <label class="bleed-label" for="bleed-slider">Bleed</label>
+          <div id="bleed-slider" class="slider"></div>
+          <p class="slider-value" id="bleed-value">150</p>
+        </div>
+        <div class="panel">
+          <h2>Colour Scheme</h2>
+          <p class="input-info">Select from the top 100 palettes from <a target="_blank" href="http://colourlovers.com">colourlovers.com</a></p>
+          <label class="colour-input-label" for="x-gradient">X Gradient</label>
+          <input class="colour-input" id="x-gradient" type="radio" name="gradient-direction" value="x" checked="checked">
+          <label class="colour-input-label" for="y-gradient">Y Gradient</label>
+          <input class="colour-input" id="y-gradient" type="radio" name="gradient-direction" value="y">
+          <h2>Palette List</h2>
+          <div id="colour-list"></div>
+          <button id="randomise-colours" class="colour-buttons" href="#">Randomise Colours</button>
+          <button id="match-colours" class="colour-buttons" href="#">Match Colours</button>
+          <button id="generate">Re-generate</button>
+
           <a id="saveas" target="_blank" href="#">Save As PNG</a>
+        </div>
         <div class="info">
           <p>Powered by <a href="https://github.com/qrohlf/trianglify">trianglify</a></p>
           <p><a href="https://github.com/alessndro/trianglify-background-generator/">View on Github</a></p>
@@ -50,9 +64,10 @@
       <div id="backgrounds">
       </div>
       <footer>
-        <canvas id="the-canvas">Your browser does not support the HTML Canvas element.</canvas>
-
+        
       </footer>
+      <canvas id="the-canvas">Your browser does not support the HTML Canvas element.</canvas>
+
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>

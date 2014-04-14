@@ -251,8 +251,9 @@ footer {
 }
 
 #colour-list {
-  height: 15em;
+  height: 20em;
   overflow-y: scroll;
+  margin: 0 0 1.5em 0;
 }
 .palette-cont {
   margin: 0.2em 0;
@@ -261,6 +262,16 @@ footer {
 .palette-colour {
   float: left;
   height: 4em;
+}
+
+#help {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 99999999;
+  text-align: center;
 }
 
 /* ==========================================================================

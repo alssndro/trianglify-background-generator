@@ -145,16 +145,23 @@ $(".screen-size-input").on("change", function(){
   updateScreen();
 });
 
+$("#show-help").on("click", function(e){
+  e.preventDefault();
+  $("#help").fadeIn();
+});
+
+$("#close-help").on("click", function(e){
+  e.preventDefault();
+  $("#help").fadeOut();
+});
+
 $("#randomise-colours").on("click", function(){
   currentXPalette = palettes[(Math.floor(Math.random() * NO_OF_PALETTES_TO_RETRIEVE))];
   currentYPalette = palettes[(Math.floor(Math.random() * NO_OF_PALETTES_TO_RETRIEVE))];
+  $(".palette-cont").css("border", "none");
   updateScreen();
 });
 
-$("#match-colours").on("click", function(){
-  currentYPalette = currentXPalette;
-  updateScreen();
-});
 
 function addColourList() {
   $(palettes).each(function(index){
@@ -173,10 +180,21 @@ function addColourList() {
 
   $("#colour-list").on("click", ".palette-cont", function() {
     var paletteIndex = $(this).data("palette-index");
-    if ($("[type='radio']:checked").val() === "x") {
-      currentXPalette = palettes[paletteIndex];
-    } else {
-      currentYPalette = palettes[paletteIndex];
+
+    $(".palette-cont").css("border", "none");
+    $(this).css("border", "3px solid #444444");
+
+    switch($("[type='radio']:checked").val()) {
+      case "x":
+        currentXPalette = palettes[paletteIndex];
+        break;
+      case "y":
+        currentYPalette = palettes[paletteIndex];
+        break;
+      case "z":
+        currentXPalette = palettes[paletteIndex];
+        currentYPalette = palettes[paletteIndex];
+        break;
     }
     updateScreen();
   });

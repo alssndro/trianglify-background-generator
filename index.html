@@ -17,49 +17,85 @@
     <header>
     </header>
     <div class="main clearfix">
-      <div id="loading"><p>Loading....</p><img src="loading.gif" alt=""></div>
-      <div id="controls">
-        <h1>
-          trianglify background generator
-        </h1>
-        <div class="panel">
-          <h2>Render Options</h2>
-          <label class="screen-size-input" for="bg-width">Width</label>
-          <input class="screen-size-input" id="bg-width" type="text" value="800"/>
-          <label class="screen-size-input" for="bg-height">Height</label>
-          <input class="screen-size-input" id="bg-height" type="text" value="400"/>
-          
-          <label for="cell-slider">Cell Size</label>
-          <div id="cell-slider" class="slider"></div>
-          <p class="slider-value" id="cell-value">150</p>
+      <div id="loading">
+      <p>
+        Loading....
+      </p>
+        <img src="loading.gif" alt="">
+    </div>
+    <div id="help">
+      <h1>
+        Help
+      </h1>
+      <h3>Width</h3>
+      <p>Width in pixels of the generated background</p>
+      <h3>Height</h3>
+      <p>Height in pixels of the generated background</p>
+      <h3>Cell Size</h3>
+      <p>Size of the generated cells</p>
+      <h3>Cell Padding</h3>
+      <p>The minimum distance between each point</p>
+      <h3>Bleed</h3>
+      <p>Set how far outside the visible area of SVG points should be rendered</p>
+      <h3>X Gradient</h3>
+      <p>Colours used to construct a gradient for the x-axis</p>
+      <h3>Y Gradient</h3>
+      <p>Colours used to construct a gradient for the y-axis</p>
+      <h3>Both</h3>
+      <p>Use the same colours for both the x-axis and y-axis</p>
+      <h3>Randomise Colours</h3>
+      <p>Use a random colour palette for each axis</p>
+      <h3>Regenerate</h3>
+      <p>Regenerate a new background using the current options</p>
+      <a id="close-help" href="#">
+        Close
+      </a>
+    </div>
+    <div id="controls">
+      <h1>
+        trianglify background generator
+      </h1>
+      <div class="panel">
+        <h2>Render Options</h2>
+        <label class="screen-size-input" for="bg-width">Width</label>
+        <input class="screen-size-input" id="bg-width" type="text" value="800"/>
+        <label class="screen-size-input" for="bg-height">Height</label>
+        <input class="screen-size-input" id="bg-height" type="text" value="400"/>
+        
+        <label for="cell-slider">Cell Size</label>
+        <div id="cell-slider" class="slider"></div>
+        <p class="slider-value" id="cell-value">150</p>
 
-          <label for="cellpadding-slider">Cell Padding</label>
-          <div id="cellpadding-slider" class="slider"></div>
-          <p class="slider-value" id="cellpadding-value">150</p>
+        <label for="cellpadding-slider">Cell Padding</label>
+        <div id="cellpadding-slider" class="slider"></div>
+        <p class="slider-value" id="cellpadding-value">150</p>
 
-          <label class="bleed-label" for="bleed-slider">Bleed</label>
-          <div id="bleed-slider" class="slider"></div>
-          <p class="slider-value" id="bleed-value">150</p>
-        </div>
-        <div class="panel">
-          <h2>Colour Scheme</h2>
-          <p class="input-info">Select from the top 100 palettes from <a target="_blank" href="http://colourlovers.com">colourlovers.com</a></p>
-          <label class="colour-input-label" for="x-gradient">X Gradient</label>
-          <input class="colour-input" id="x-gradient" type="radio" name="gradient-direction" value="x" checked="checked">
-          <label class="colour-input-label" for="y-gradient">Y Gradient</label>
-          <input class="colour-input" id="y-gradient" type="radio" name="gradient-direction" value="y">
-          <h2>Palette List</h2>
-          <div id="colour-list"></div>
-          <button id="randomise-colours" class="colour-buttons" href="#">Randomise Colours</button>
-          <button id="match-colours" class="colour-buttons" href="#">Match Colours</button>
-          <button id="generate">Re-generate</button>
+        <label class="bleed-label" for="bleed-slider">Bleed</label>
+        <div id="bleed-slider" class="slider"></div>
+        <p class="slider-value" id="bleed-value">150</p>
+      </div>
+      <div class="panel">
+        <h2>Colour Scheme</h2>
+        <p class="input-info">Select from the top 100 palettes from <a target="_blank" href="http://colourlovers.com">colourlovers.com</a></p>
+        <label class="colour-input-label" for="x-gradient">X Gradient</label>
+        <input class="colour-input" id="x-gradient" type="radio" name="gradient-direction" value="x" checked="checked">
+        <label class="colour-input-label" for="y-gradient">Y Gradient</label>
+        <input class="colour-input" id="y-gradient" type="radio" name="gradient-direction" value="y">
+        <label class="colour-input-label" for="both-gradient">Both</label>
+        <input class="colour-input" id="both-gradient" type="radio" name="gradient-direction" value="z">
 
-          <a id="saveas" target="_blank" href="#">Save As PNG</a>
-        </div>
-        <div class="info">
-          <p>Powered by <a href="https://github.com/qrohlf/trianglify">trianglify</a></p>
-          <p><a href="https://github.com/alessndro/trianglify-background-generator/">View on Github</a></p>
-        </div>
+        <h2>Palette List</h2>
+        <div id="colour-list"></div>
+        <button id="randomise-colours" class="colour-buttons" href="#">Randomise Colours</button>
+        <button id="generate">Regenerate</button>
+
+        <a id="saveas" target="_blank" href="#">Save As PNG</a>
+        <a id="show-help" href="#">Help</a>
+      </div>
+      <div class="info">
+        <p>Powered by <a href="https://github.com/qrohlf/trianglify" target="_blank">trianglify</a></p>
+        <p><a href="https://github.com/alessndro/trianglify-background-generator/" target="_blank">View on Github</a></p>
+      </div>
       </div>
       <div id="backgrounds">
       </div>

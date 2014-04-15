@@ -4,6 +4,7 @@ var currentPattern;
 var palettes = [];
 var currentXPalette;
 var currentYPalette;
+var image_url;
 
 var NO_OF_PALETTES_TO_RETRIEVE = 100;
 
@@ -67,10 +68,10 @@ function convertSVGtoPNG() {
 
   var image = new Image();
 
-  image.addEventListener("load", function() {
+  $(image).on("load", function() {
                   context.drawImage(image, 0, 0);
-                  $("#saveas").attr("href", canvas.toDataURL("image/png"));
-              }, false);
+                  $("#download-btn").attr("href", canvas.toDataURL("image/png"));
+              });
   image.src = currentPattern.dataUri;
 }
 
@@ -199,3 +200,20 @@ function addColourList() {
     updateScreen();
   });
 }
+
+// $(colorbrewer).each(function(){
+//   $(this).each(function(){
+//     $(this).each(function(){
+//         console.log(this);
+//       });
+//     });
+//   });
+
+// Object.keys(colorbrewer).forEach(function(key){
+//   Object.keys(colorbrewer[key]).forEach(function(paletteKey){
+//     var currPalette = colorbrewer[key];
+//     Object.keys(currPalette[paletteKey]).forEach(function(index){
+//       console.log(this);
+//     });
+//   });
+// });

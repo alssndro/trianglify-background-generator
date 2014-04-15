@@ -15,6 +15,9 @@
   </head>
   <body>
     <header>
+      <h1>
+        trianglify background generator
+      </h1>
     </header>
     <div class="main clearfix">
       <div id="loading">
@@ -23,44 +26,13 @@
       </p>
         <img src="loading.gif" alt="">
     </div>
-    <div id="help">
-      <h1>
-        Help
-      </h1>
-      <h3>Width</h3>
-      <p>Width in pixels of the generated background</p>
-      <h3>Height</h3>
-      <p>Height in pixels of the generated background</p>
-      <h3>Cell Size</h3>
-      <p>Size of the generated cells</p>
-      <h3>Cell Padding</h3>
-      <p>The minimum distance between each point</p>
-      <h3>Bleed</h3>
-      <p>Set how far outside the visible area of SVG points should be rendered</p>
-      <h3>X Gradient</h3>
-      <p>Colours used to construct a gradient for the x-axis</p>
-      <h3>Y Gradient</h3>
-      <p>Colours used to construct a gradient for the y-axis</p>
-      <h3>Both</h3>
-      <p>Use the same colours for both the x-axis and y-axis</p>
-      <h3>Randomise Colours</h3>
-      <p>Use a random colour palette for each axis</p>
-      <h3>Regenerate</h3>
-      <p>Regenerate a new background using the current options</p>
-      <a id="close-help" href="#">
-        Close
-      </a>
-    </div>
     <div id="controls">
-      <h1>
-        trianglify background generator
-      </h1>
       <div class="panel">
         <h2>Render Options</h2>
         <label class="screen-size-input" for="bg-width">Width</label>
-        <input class="screen-size-input" id="bg-width" type="text" value="800"/>
+        <input class="screen-size-input" id="bg-width" type="text" value="1400"/>
         <label class="screen-size-input" for="bg-height">Height</label>
-        <input class="screen-size-input" id="bg-height" type="text" value="400"/>
+        <input class="screen-size-input" id="bg-height" type="text" value="1000"/>
         
         <label for="cell-slider">Cell Size</label>
         <div id="cell-slider" class="slider"></div>
@@ -84,23 +56,22 @@
         <label class="colour-input-label" for="both-gradient">Both</label>
         <input class="colour-input" id="both-gradient" type="radio" name="gradient-direction" value="z">
 
-        <h2>Palette List</h2>
+        <label>Palette List</label>
         <div id="colour-list"></div>
         <button id="randomise-colours" class="colour-buttons" href="#">Randomise Colours</button>
         <button id="generate">Regenerate</button>
+        <a id="download-btn" href="#" target="_blank">Download</a>
+        <a href="help.html">Help</a>
+      </div>
 
-        <a id="saveas" target="_blank" href="#">Save As PNG</a>
-        <a id="show-help" href="#">Help</a>
-      </div>
-      <div class="info">
-        <p>Powered by <a href="https://github.com/qrohlf/trianglify" target="_blank">trianglify</a></p>
-        <p><a href="https://github.com/alessndro/trianglify-background-generator/" target="_blank">View on Github</a></p>
-      </div>
       </div>
       <div id="backgrounds">
       </div>
       <footer>
-        
+        <div class="info">
+          <p>Powered by <a href="https://github.com/qrohlf/trianglify" target="_blank">trianglify</a></p>
+          <p><a href="https://github.com/alessndro/trianglify-background-generator/" target="_blank">View on Github</a></p>
+        </div>
       </footer>
       <canvas id="the-canvas">Your browser does not support the HTML Canvas element.</canvas>
 

@@ -4,7 +4,6 @@ var currentPattern;
 var palettes = [];
 var currentXPalette;
 var currentYPalette;
-var image_url;
 
 var NO_OF_PALETTES_TO_RETRIEVE = 100;
 

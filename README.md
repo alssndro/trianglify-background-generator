@@ -1,6 +1,6 @@
 # Trianglify Background Generator
 
-![](app.jpg)
+![](app.png)
 
 A tool to generate images from SVGs rendered by the [Trianglify](http://github.com/trianglify) JS plugin.
 

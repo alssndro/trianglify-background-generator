@@ -22,7 +22,7 @@
     <div class="main clearfix">
       <div id="loading">
       <p>
-        Loading....
+        LOADING....
       </p>
         <img src="loading.gif" alt="">
     </div>
@@ -40,7 +40,7 @@
 
         <label for="cellpadding-slider">Cell Padding</label>
         <div id="cellpadding-slider" class="slider"></div>
-        <p class="slider-value" id="cellpadding-value">150</p>
+        <p class="slider-value" id="cellpadding-value">15</p>
 
         <label class="bleed-label" for="bleed-slider">Bleed</label>
         <div id="bleed-slider" class="slider"></div>
@@ -48,7 +48,9 @@
       </div>
       <div class="panel">
         <h2>Colour Scheme</h2>
-        <p class="input-info">Select from the top 100 palettes from <a target="_blank" href="http://colourlovers.com">colourlovers.com</a></p>
+        <p class="input-info">
+          Select from the top 100 palettes from <a target="_blank" href="http://colourlovers.com">colourlovers</a>, and also the <a href="http://bl.ocks.org/mbostock/5577023" target="_blank">ColorBrewer</a> palettes.
+        </p>
         <label class="colour-input-label" for="x-gradient">X Gradient</label>
         <input class="colour-input" id="x-gradient" type="radio" name="gradient-direction" value="x" checked="checked">
         <label class="colour-input-label" for="y-gradient">Y Gradient</label>
@@ -73,8 +75,7 @@
           <p><a href="https://github.com/alessndro/trianglify-background-generator/" target="_blank">View on Github</a></p>
         </div>
       </footer>
-      <canvas id="the-canvas">Your browser does not support the HTML Canvas element.</canvas>
-
+      <canvas id="the-canvas"></canvas>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>

@@ -158,8 +158,6 @@ html, body, .main {
 }
 
 .panel {
-  float: left;
-  width: 50%;
   padding: 0 4%;
 }
 
@@ -247,10 +245,6 @@ footer {
   margin: 0.75em 0;
 }
 
-.colour-buttons {
-
-}
-
 .colour-input {
   float: left;
   width: 20%;
@@ -288,6 +282,12 @@ footer {
   padding: 1.5em 0;
 }
 
+@media(min-width: 1200px) {
+  .panel {
+    float: left;
+    width: 50%;
+  }
+}
 /* ==========================================================================
  jQuery UI Slider overrides
  ========================================================================== */

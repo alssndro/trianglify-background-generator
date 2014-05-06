@@ -7,7 +7,7 @@ A tool to generate images from SVGs rendered by the [Trianglify](https://github.
 The app utilises the [ColourLovers](http:colourlovers.com) API to allow backgrounds to be generated using colours from the top 100
 palettes.
 
-See the app in action [here](http://alessndro.github.io/trianglify-background-generator/).
+See the app in action [here](http://alssndro.github.io/trianglify-background-generator/).
 
 ## Issues
 
